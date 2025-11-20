@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Website</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2>Priya Shandilya</h2>
+            </div>
+            <div class="nav-content">
+                <ul>
+                    <li id="home"><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li> <a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section class="hero">
+        <div class="details">
+            <p>Hey,i'm Priya</p>
+            <h1>I am a <span id="typing-text"></span></h1>
+            <p>I specialize in Java Full Stack Development and have a growing interest in Artificial Intelligence and
+                Machine Learning.</p>
+            <div class="btn">
+                <a href="contact.html"><button id="btn1">Contact</button></a>
+                <a href="https://github.com/PriyaShandilya"><button id="btn2">Browse Projects</button></a>
+            </div>
+        </div>
+        <div class="image">
+            <img src="Screenshot (540).png" alt="image.com">
+        </div>
+    </section>
+
+    <section class="about-me">
+        <h1>About me<span>.</span></h1>
+        <p>I’m currently pursuing my MCA at Manipal University Jaipur, and exploring the exciting intersection of Full
+            Stack Development and AI innovation.</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h1>Recent Projects</h1>
+        <p>Check out some of my most recent work</p>
+        <div class="card-container">
+            <div class="card">
+                <h2>NFT Qurom</h2>
+                <p id="project-title">A Blockchain application built with solidity,A Blockchain application built with
+                    solidity</p>
+                <a href=""><button id="btn3">Code</button></a>
+            </div>
+            <div class="card">
+                <h2>NFT Qurom</h2>
+                <p>A Blockchain application built with solidity,A Blockchain application built with solidity</p>
+                <a href=""><button id="btn3">Code</button></a>
+            </div>
+            <div class="card">
+                <h2>NFT Qurom</h2>
+                <p>A Blockchain application built with solidity,A Blockchain application built with solidity</p>
+                <a href=""><button id="btn3">Code</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="skill-section">
+        <h1>Skills<span>.</span></h1>
+        <div class="skills">
+            <div class="skill">
+                <h3>Frontend</h3>
+                <ul>
+                    <li>Html</li>
+                    <li>Css</li>
+                    <li>Javascript</li>
+                    <li>React</li>
+                    <li>Next.js</li>
+                </ul>
+            </div>
+            <div class="skill">
+                <h3>Backend</h3>
+                <ul>
+                    <li>Html</li>
+                    <li>Css</li>
+                    <li>Javascript</li>
+                    <li>React</li>
+                    <li>Next.js</li>
+                </ul>
+            </div>
+            <div class="skill">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Html</li>
+                    <li>Css</li>
+                    <li>Javascript</li>
+                    <li>React</li>
+                    <li>Next.js</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>© 2025 Priya Shandilya | Built with 💜</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const typingTextElement = document.getElementById('typing-text');
+            const phrases = ["FullStack Developer", "Software Developer"]; // PHRASES TO CYCLE THROUGH
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingSpeed = 100;
+            const deletingSpeed = 60;
+            const pauseTime = 1500;
+
+            function typeWriter() {
+                const currentPhrase = phrases[phraseIndex];
+
+                // Determine if we are adding or removing a character
+                if (isDeleting) {
+                    typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    // Done typing, start deleting after a pause
+                    currentSpeed = pauseTime;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    // Done deleting, switch to next phrase
+                    isDeleting = false;
+                    // Cycle to the next phrase
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    currentSpeed = typingSpeed;
+                }
+
+                // Call this function again after the calculated delay
+                setTimeout(typeWriter, currentSpeed);
+            }
+
+            // Start the typing effect when the page loads
+            typeWriter();
+        });
+    </script>
+</body>
+
+</html>

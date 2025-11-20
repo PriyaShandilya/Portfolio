@@ -1,0 +1,14 @@
+.navbar{
+    flex-direction: column;
+}
+.nav{
+    width: 600px;
+}
+ 
+    .hero{
+    flex-direction: column-reverse;
+
+}
+{
+    padding: 200px;
+}
