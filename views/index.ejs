@@ -123,7 +123,7 @@
             function typeWriter() {
                 const currentPhrase = phrases[phraseIndex];
 
-                // Determine if we are adding or removing a character
+             
                 if (isDeleting) {
                     typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
                     charIndex--;
@@ -135,22 +135,22 @@
                 let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
 
                 if (!isDeleting && charIndex === currentPhrase.length) {
-                    // Done typing, start deleting after a pause
+               
                     currentSpeed = pauseTime;
                     isDeleting = true;
                 } else if (isDeleting && charIndex === 0) {
-                    // Done deleting, switch to next phrase
+                  
                     isDeleting = false;
-                    // Cycle to the next phrase
+               
                     phraseIndex = (phraseIndex + 1) % phrases.length;
                     currentSpeed = typingSpeed;
                 }
 
-                // Call this function again after the calculated delay
+          
                 setTimeout(typeWriter, currentSpeed);
             }
 
-            // Start the typing effect when the page loads
+        
             typeWriter();
         });
     </script>
